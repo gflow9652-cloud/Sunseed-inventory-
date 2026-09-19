@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f4f6f9;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #1e293b;
+            color: #white;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar .logo {
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #0f172a;
+            text-align: center;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar nav ul li a {
+            display: block;
+            padding: 12px 20px;
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .sidebar nav ul li a:hover, .sidebar nav ul li a.active {
+            background-color: #334155;
+            color: #fff;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        /* Header */
+        header {
+            height: 60px;
+            background-color: #fff;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        header .user-info {
+            font-size: 14px;
+            color: #475569;
+        }
+
+        /* Dashboard Body */
+        .dashboard-body {
+            padding: 20px;
+        }
+
+        .dashboard-body h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">My App</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <header>
+            <h2>Dashboard</h2>
+            <div class="user-info">Welcome, User</div>
+        </header>
+
+        <div class="dashboard-body">
+            <h1>Overview</h1>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Total Users</h3>
+                    <p>1,245</p>
+                </div>
+                <div class="card">
+                    <h3>Active Sessions</h3>
+                    <p>342</p>
+                </div>
+                <div class="card">
+                    <h3>Revenue</h3>
+                    <p>$12,400</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
