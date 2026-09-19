@@ -134,4 +134,65 @@
 
 </body>
   </html>
+//script 1. Initialize the Supabase Client
+// Replace these placeholders with your actual project details from your Supabase Dashboard
+const SUPABASE_URL = 'https://supabase.co';
+const SUPABASE_ANON_KEY = 'your-anon-key';
+
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// 2. Wait for the DOM to load and attach the event listener
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('loginForm');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLogin);
+    }
+});
+
+// 3. Handle the Login Event
+async function handleLogin(event) {
+    event.preventDefault(); // Prevent the default form submission page reload
+
+    // Get input elements (Ensure your HTML inputs have these exact IDs)
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const errorMessage = document.getElementById('error-message');
+
+    // Reset any previous error messages
+    if (errorMessage) errorMessage.textContent = '';
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    try {
+        // 4. Authenticate with Supabase
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        });
+
+        if (error) {
+            // If Supabase returns an authentication error (e.g., wrong password)
+            throw error;
+        }
+
+        // 5. Handle Successful Login
+        console.log('Login successful!', data);
+        alert('Welcome back! Login successful.');
+        
+        // Redirect the user to a secure dashboard page
+        window.location.href = '/dashboard.html';
+
+    } catch (error) {
+        // 6. Handle Errors gracefully
+        console.error('Authentication error:', error.message);
+        if (errorMessage) {
+            errorMessage.textContent = error.message || 'Invalid login credentials.';
+        } else {
+            alert(error.message);
+        }
+    }
+\\script}
+
   
